@@ -1,11 +1,11 @@
 node
 {
 
-  def mavenHome=tool name: "maven3.6.3"
+  def mavenHome=tool name: "Maven"
   
  stage('Checkout')
  {
- 	git branch: 'development', credentialsId: 'bed5a851-d84d-412e-87e7-bf9ce23c0e0e', url: 'https://github.com/MithunTechnologiesDevOps/maven-web-application.git'
+ 	 git credentialsId: 'b4586e26-8c92-434c-bc26-22a3a1a15a2f', url: 'https://github.com/devopstechnologies-ec-applications/maven-web-application.git'
  
  }
 
@@ -26,8 +26,8 @@ node
  
  stage('DeployAppintoTomcat')
  {
- sshagent(['cd93d61f-2d0f-4c60-8b33-34cf4fa888b0']) {
-  sh "scp -o StrictHostKeyChecking=no target/maven-web-application.war ec2-user@13.235.132.183:/opt/apache-tomcat-9.0.29/webapps/"
+sshagent(['585beb7b-8609-49bc-867b-75bc123e53b9']) {
+  sh "scp -o StrictHostKeyChecking=no target/maven-web-application.war ec2-user@13.235.51.244:/opt/apache-tomcat-9.0.38/webapps/"
  }
  }
 
